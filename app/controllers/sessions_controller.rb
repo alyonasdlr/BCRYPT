@@ -11,12 +11,19 @@ def create
     if @user
         #check the password
         if BCrypt::Password.new(@user.password) ==entered_password
+            session["user_id"] = user.id
             redirect_to "companies"
     else
         #password doesnt match, redirect to login page
+        flash[:notice] = "Password is incorrect"
         redirect_to "/sessions/new"
     end
 end
 
+def destroy
+    session["user_id"] = nil
+    flash[:notice] = "You have been logged out"
+    redirect_to "/sessions/new"
+end
 
 end

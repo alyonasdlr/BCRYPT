@@ -10,8 +10,15 @@
   </head>
 
   <body>
+
+  #add the user
+<p>
+<%= button_to "Logout", "/sessions", %>
+</p>
+
+
     <p>
-      <%= flash[:notice] %>
+      <%= flash[:notice] %> 
     </p>
 
     <%= yield %>
